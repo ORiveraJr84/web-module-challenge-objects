@@ -1,17 +1,33 @@
 ///////////////Menu Items (MVP)///////////////////
 
 const latte = {name: "Cafe Latte", price: 4, category: "Drinks"};
-const burger = {name: "Burger", price: 18, category: "Lunch"};
+const burger = {name: "Burger", price: 18, category: "Lunch", discount: function (discountType) {
+  if (discountType == "student" || discountType == "teacher") {
+    console.log("You get a 25% discount. Your food will cost you $" + (this.price * .75).toFixed(2) + ".");
+  } else {
+    console.log("You get a 10% discount. Your food will cost you $" + (this.price * .90).toFixed(2) + ".");
+  };
+}};
 const breakfastBurrito = {name: "Breakfast Burrito", price: 16, category:"Breakfast"};
 
 /* Task 1a: write a function to return more menu items with the same format as the items above. */
 
-function createMenuItem(name, cost, category){
-    /* Code here */
+function createMenuItem(name, price, category){
+  
+  newObj = {
+    "name":name,
+    "price":price,
+    "category":category,
+  }
+  console.log(newObj);
+
 }
 
 /* Task 1b: use your function to create 3 more menu items. You may add any items to the menu that you'd like */
 
+ createMenuItem("Grilled Cheese",4,"Lunch");
+ createMenuItem("Mac & Cheese",5,"Lunch");
+ createMenuItem("Rice and Beans",6,"Dinner");
 
 
 /* Task 2: You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to your burger object that automatically calculates price given a string as a parameter. 
@@ -23,7 +39,7 @@ Your method should accept:
 and should return a number. 
 
 For example, burger.discount("teacher") would return 13.5 and burger.discount("public") would return 16.2*/
-
+burger.discount("teacher");
 
 
 ///////////////Reviews (MVP)///////////////////
@@ -40,11 +56,18 @@ const reviews = [{name: "Daniela", rating: 5, feedback:"Beautiful atmosphere and
 
 /* Task 3: Console.log just Julius' feedback */
 
+console.log(reviews[5].feedback);
+
 
 /* Task 4: Add a new rating with your (fictitious) opinions of the restaurant in the same format as the reviews above. */
 
+reviews.push({name:"Orlando", rating: 4.5, feedback: "I thought this place was pretty dope. I didn't expect to like it as much as I did! I'll DEFINITRLY be coming back here again!!"},);
+console.log(reviews[reviews.length - 1].feedback);
 
-/* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
+
+/* Task 5: Add the following feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays" */
+
+console.log(reviews[4].feedback = "this place is chill with really cool people, great for getting work done on weekdays");
 
 /*  Task 6: Write a function to return a review based on the index of the review in the array.
 
@@ -58,11 +81,11 @@ and should return a string in the format `{name} gave the restaurant a {rating},
  * For example, if getReviewByIndex is invoked with reviews and the number 0
  * it will return `Daniela gave the restaurant a 5 star review and their feedback was: Beautiful atmosphere and wonderful vegan options!`
 */
-function getReviewByIndex(reviews, index) {
-    /* code here */
+function getReviewByIndex(array, index) {
+   console.log(array[index].feedback);
   }
   
-
+getReviewByIndex(reviews,0);
 /* Task 7: Write a function to get information about the most recent review called `getLastReview`
 
 getLastReview should accept:
@@ -72,9 +95,11 @@ and should return a string in the format `name} gave the restaurant a {rating}, 
 
 For example, if getLastReview is invoked passing the reviews array it will return `Reyna gave the restaurant a 3.5 star review and their feedback was: "this place is chill with really cool people, great for getting work done on weekdays"`.
 */
-function getLastReview(/* code here */) {
-    /* code here */
+function getLastReview(array) {
+    console.log(array[(array.length-1)].feedback);
   } 
+
+getLastReview(reviews);
 
 
 ///////////////🍔☕️🍽 STRETCH🍔☕️🍽////////////////////
